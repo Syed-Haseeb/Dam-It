@@ -30,7 +30,11 @@ public class DungeonCamera : MonoBehaviour {
 		} else if (Input.GetKey (KeyCode.N)) {
 			this.camera.orthographicSize *= 1.001f;
 		} else {
-			this.camera.orthographicSize = 35.0f;
+			if (this.camera.orthographicSize > 35.0f) {
+				this.camera.orthographicSize /= 1.01f;
+			} else {
+				this.camera.orthographicSize *= 1.01f;
+			}
 		}
 	}
 }
