@@ -25,15 +25,19 @@ public class DungeonCamera : MonoBehaviour {
 	
 	void resizeOrthographicView()
 	{
-		if (Input.GetKey (KeyCode.M)) {
-			this.camera.orthographicSize /= 1.001f;
-		} else if (Input.GetKey (KeyCode.N)) {
-			this.camera.orthographicSize *= 1.001f;
+		if (Input.GetKey (KeyCode.Comma)) {
+			if(this.camera.orthographicSize > 10.0f)
+				this.camera.orthographicSize /= 1.005f;
+		} else if (Input.GetKey (KeyCode.M)) {
+			if(this.camera.orthographicSize < 100.0f)
+				this.camera.orthographicSize *= 1.005f;
 		} else {
 			if (this.camera.orthographicSize > 35.0f) {
-				this.camera.orthographicSize /= 1.01f;
+				this.camera.orthographicSize /= 1.005f;
+			} else if (this.camera.orthographicSize < 35.0f){
+				this.camera.orthographicSize *= 1.005f;
 			} else {
-				this.camera.orthographicSize *= 1.01f;
+				this.camera.orthographicSize = 35.0f;
 			}
 		}
 	}
